@@ -1,0 +1,50 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    <h1> pagina de Cursos</h1>
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+<!-- como definir un titulo en views.py-->
+<h1> {{ titulo | capfirst }}   Hoy: {% now "d / m / y"    %}
+</h1>
+
+<h4> Cantidad de cursos: {{cursos | length }}</h4>
+<table class="table table-striped">
+    <thead>
+     <tr>
+        <th>Id</th>
+        <th>Curso</th>
+        <th>Comision</th>
+     </tr>
+    </thead>
+    <tbody>
+        {%for elemento in cursos     %}
+        <tr>
+            <td>{{ elemento.id }}</td>
+            <td>{{ elemento.nombre }}</td>
+            <td>{{ elemento.comision }}</td>
+        </tr>
+
+
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- como recorrer un for-->
+{%for comi in comisiones %}
+
+    {{comi }}
+    
+    
+{%endfor %}
+
+<!-- como recorrer una lista-->
+{% comment %} <h4> Comisiones: {{ comisiones.0 }}, {{ comisiones.1 }} </h4> {% endcomment %}
+
+{% endblock contenido %}
+    
